@@ -11,11 +11,11 @@ import {
 
 @Component({
   selector: 'app-forms-page',
-  templateUrl: './form.component.html',
-  styleUrls: ['./form.component.scss'],
+  templateUrl: './forms.component.html',
+  styleUrls: ['./forms.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
-export class FormComponent implements OnInit {
+export class FormsComponent implements OnInit {
 
   userDetailsForm: FormGroup;
   accountDetailsForm: FormGroup;

@@ -2,17 +2,7 @@ app-forms-page {
   .container {
     margin-top: 50px;
   }
-// Workaround for https://github.com/angular/material2/issues/4580.
-  mat-form-field .mat-form-field {
-    &-underline {
-      position: relative;
-      bottom: auto;
-    }
-    &-subscript-wrapper {
-      position: static;
-    }
-  }
-
+  
   .section-title {
     margin-bottom: 20px;
   }

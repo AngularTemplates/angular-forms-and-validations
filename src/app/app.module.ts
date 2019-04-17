@@ -1,9 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
-import { rootRouterConfig } from './app.routes';
-import { RouterModule } from '@angular/router';
+
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {
   MatButtonModule,
@@ -14,26 +14,24 @@ import {
   MatNativeDateModule
  } from '@angular/material';
 
-import { AppComponent } from './app.component';
-import { FormComponent } from './form-component/form.component';
+import { FormsComponent } from './forms/forms.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    FormComponent
+    FormsComponent
   ],
   imports: [
     BrowserModule,
-    FormsModule,
-    RouterModule.forRoot(rootRouterConfig, { useHash: false }),
-    ReactiveFormsModule,
+    AppRoutingModule,
     BrowserAnimationsModule,
+    FormsModule,
+    ReactiveFormsModule,
     MatButtonModule,
     MatInputModule,
     MatDatepickerModule,
     MatNativeDateModule,
     MatCheckboxModule,
-    HttpClientModule,
     MatSelectModule
   ],
   providers: [],
