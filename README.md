@@ -18,7 +18,7 @@ Navigate to `http://localhost:4200/`. The app will automatically reload if you c
 
 ## Online Demo
 
-You can try the online demo of this Angular 7 CRUD [here](https://angular-forms-and-validations.firebaseapp.com/).
+You can try the online demo of this Angular Forms example app [here](https://angular-forms-and-validations.firebaseapp.com/).
 
 ## Premium Angular Starter Apps
 
