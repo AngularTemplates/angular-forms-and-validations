@@ -25,6 +25,8 @@ You can try the online demo of this Angular 7 CRUD [here](https://angular-forms-
 If you want to build a complex and robust app with Angular Forms and Validations you should check [Angular Admin Template](https://angular-templates.com/product/angular-admin-template) which is a super complete application to build your next angular project.
 
 Created with performance and ease of development in mind, this Angular 7 web template is something you will love. It includes all the components that you might need inside a project and a detailed documentation on how to get started.
+
+
 ![](https://s3-us-west-2.amazonaws.com/angular-templates/angular-duo-template/angular-admin-template-new-cover.jpeg)
 
 ## Free Angular examples
