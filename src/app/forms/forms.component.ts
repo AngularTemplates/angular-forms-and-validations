@@ -18,7 +18,6 @@ import {
 export class FormsComponent implements OnInit {
 
   userDetailsForm: FormGroup;
-  accountDetailsForm: FormGroup;
 
   matching_passwords_group: FormGroup;
   country_phone_group: FormGroup;
@@ -47,14 +46,9 @@ export class FormsComponent implements OnInit {
     'body': [
       { type: 'maxlength', message: 'Bio cannot be more than 256 characters long' },
     ],
-    'gender': [
-      { type: 'required', message: 'Please select your gender' },
-    ],
-    'birthday': [
-      { type: 'required', message: 'Please insert your birthday' },
-    ],
+
     'phone': [
-      { type: 'required', message: 'Phone is required' },
+
       { type: 'validCountryPhone', message: 'Phone incorrect for the country selected' }
     ]
   };
@@ -66,19 +60,7 @@ export class FormsComponent implements OnInit {
   }
 
   createForms() {
-    // matching passwords validation
-    this.matching_passwords_group = new FormGroup({
-      password: new FormControl('', Validators.compose([
-        Validators.minLength(5),
-        Validators.required,
-        Validators.pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])[a-zA-Z0-9]+$')
-      ])),
-      confirm_password: new FormControl('', Validators.required)
-    }, (formGroup: FormGroup) => {
-      return PasswordValidator.areEqual(formGroup);
-    });
-
-    // country & phone validation
+      // country & phone validation
     let country = new FormControl(this.countries[0], Validators.required);
 
     let phone = new FormControl('', {
@@ -96,10 +78,8 @@ export class FormsComponent implements OnInit {
     // user details form validations
     this.userDetailsForm = this.fb.group({
       fullname: ['', Validators.required ],
-      body: ["Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s", Validators.maxLength(256)],
-      birthday: ['', Validators.required],
-      gender: new FormControl(this.genders[0], Validators.required),
-      country_phone: this.country_phone_group,
+      body: ["Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s", Validators.maxLength(3000)],
+   //   country_phone: this.country_phone_group,
       email: new FormControl('', Validators.compose([
         Validators.required,
         Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')

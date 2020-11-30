@@ -26,28 +26,8 @@
         </mat-form-field>
 
 
-        <div formGroupName="country_phone" class="row">
-          <mat-form-field class="full-width col-4">
-            <mat-select formControlName="country" placeholder="Country">
-              <mat-option *ngFor="let country of countries" [value]="country">
-                {{ country.name }}
-              </mat-option>
-            </mat-select>
-          </mat-form-field>
-          <mat-form-field class="full-width col-8">
-            <input matInput placeholder="Phone" type="tel" formControlName="phone">
-            <mat-hint align="start"><strong>Mobile:</strong> {{ userDetailsForm.value.country_phone.country.sampleMobilePhone }}</mat-hint>
-            <mat-hint align="end"><strong>Fixed:</strong> {{ userDetailsForm.value.country_phone.country.sampleFixedPhone }}</mat-hint>
-            <mat-error *ngFor="let validation of validation_messages.phone">
-              <mat-error class="error-message" class="error-message" *ngIf="userDetailsForm.get('country_phone').get('phone').hasError(validation.type) && (userDetailsForm.get('country_phone').get('phone').dirty || userDetailsForm.get('country_phone').get('phone').touched)">
-                {{ validation.message }}
-              </mat-error>
-            </mat-error>
-          </mat-form-field>
-        </div>
-
-        <mat-form-field class="full-width">
-          <textarea matInput maxlength="256" placeholder="Email Body" formControlName="body" matTextareaAutosize matAutosizeMinRows="10" matAutosizeMaxRows="50"></textarea>
+           <mat-form-field class="full-width">
+          <textarea matInput maxlength="3000" placeholder="Email Body" formControlName="body" matTextareaAutosize matAutosizeMinRows="10" matAutosizeMaxRows="50"></textarea>
           <mat-hint align="start">Email Body</mat-hint>
           <mat-hint align="end">{{userDetailsForm.get('body').value.length}} / 3000</mat-hint>
           <mat-error *ngFor="let validation of validation_messages.body">
