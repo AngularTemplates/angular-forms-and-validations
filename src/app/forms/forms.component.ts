@@ -1,5 +1,6 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, Input, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
+import { Observable } from 'rxjs';
 import {
   Country,
   UsernameValidator,
@@ -8,7 +9,7 @@ import {
   PhoneValidator
 } from '../validators';
 
-
+import { HttpModuleService } from "./../http-module.service";
 @Component({
   selector: 'app-forms-page',
   templateUrl: './forms.component.html',
@@ -16,7 +17,17 @@ import {
   encapsulation: ViewEncapsulation.None
 })
 export class FormsComponent implements OnInit {
+  @Input()
+  valueContent: string;
+  editorValueType: string;
 
+  onValueTypeChanged({ addedItems }) {
+      this.editorValueType = addedItems[0].text.toLowerCase();
+  }
+
+  valueChange(value) {
+      this.valueContent = value;
+  }
   userDetailsForm: FormGroup;
 
   matching_passwords_group: FormGroup;
@@ -44,7 +55,7 @@ export class FormsComponent implements OnInit {
       { type: 'pattern', message: 'Enter a valid email' }
     ],
     'body': [
-      { type: 'maxlength', message: 'Bio cannot be more than 256 characters long' },
+      { type: 'maxlength', message: '' },
     ],
 
     'phone': [
@@ -52,8 +63,18 @@ export class FormsComponent implements OnInit {
       { type: 'validCountryPhone', message: 'Phone incorrect for the country selected' }
     ]
   };
-
-  constructor(private fb: FormBuilder) { }
+  result$: any;
+ val:any;
+  constructor(private fb: FormBuilder, private httpModuleService: HttpModuleService) {
+    this.result$ = httpModuleService.resolveItems().subscribe(
+      res => {
+        this.val= res;
+        this.valueContent=res.body;
+        this.editorValueType = 'markdown';
+      },
+      msg => console.error(`Error: ${msg.status} ${msg.statusText}`)
+    );
+  }
 
   ngOnInit() {
     this.createForms();
@@ -78,7 +99,7 @@ export class FormsComponent implements OnInit {
     // user details form validations
     this.userDetailsForm = this.fb.group({
       fullname: ['', Validators.required ],
-      body: ["Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s", Validators.maxLength(3000)],
+      body: ['', Validators.maxLength(3000)],
    //   country_phone: this.country_phone_group,
       email: new FormControl('', Validators.compose([
         Validators.required,

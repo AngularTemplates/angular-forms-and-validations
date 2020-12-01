@@ -25,6 +25,8 @@
     "@angular/router": "~7.2.0",
     "bootstrap": "^4.3.1",
     "core-js": "^2.5.4",
+    "devextreme": "20.2.3",
+    "devextreme-angular": "20.2.3",
     "google-libphonenumber": "^3.2.2",
     "rxjs": "~6.3.3",
     "tslib": "^1.9.0",
