@@ -1,6 +1,7 @@
 import { Component, Input, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
+import { EmailRecieveModel } from "./../model/emailModel";
 import {
   Country,
   UsernameValidator,
@@ -23,6 +24,7 @@ export class FormsComponent implements OnInit {
 
   onValueTypeChanged({ addedItems }) {
       this.editorValueType = addedItems[0].text.toLowerCase();
+      console.log(this.editorValueType);
   }
 
   valueChange(value) {
@@ -64,13 +66,15 @@ export class FormsComponent implements OnInit {
     ]
   };
   result$: any;
- val:any;
+  val:{};
   constructor(private fb: FormBuilder, private httpModuleService: HttpModuleService) {
     this.result$ = httpModuleService.resolveItems().subscribe(
       res => {
+       this.valueContent=res.body;
         this.val= res;
-        this.valueContent=res.body;
-        this.editorValueType = 'markdown';
+        this.editorValueType='html'
+        console.log(this.val);
+
       },
       msg => console.error(`Error: ${msg.status} ${msg.statusText}`)
     );
@@ -111,12 +115,19 @@ export class FormsComponent implements OnInit {
 
   }
 
-  onSubmitAccountDetails(value){
-    console.log(value);
-  }
+   onSubmitUserDetails(value){
+    value.body= this.valueContent;
+    // value.subject=this.val.subject;
+    // value.campaignID=this.val.campaignID;
+    this.httpModuleService.emailSent(value).subscribe(
+      res => {
 
-  onSubmitUserDetails(value){
-    console.log(value);
+        console.log(res);
+
+      },
+      msg => console.error(`Error: ${msg.status} ${msg.statusText}`)
+    );
+      console.log(value);
   }
 
 }

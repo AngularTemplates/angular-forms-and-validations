@@ -6,12 +6,12 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class HttpModuleService {
-  private readonly URL = 'https://localhost:44351/api/email?id=1';
+  private readonly URL = 'https://localhost:44351/api/email';
 
   constructor(private http: HttpClient) {  }
 
    resolveItems(): Observable<any> {
-    console.log('Request is sent!');
+    console.log('Request is received!');
     // this.http is a HttpClient library provide by @angular/common
     // we are calling .get() method over this.http object
     // this .get() method takes URL to call API
@@ -20,20 +20,16 @@ export class HttpModuleService {
         'Content-Type': 'application/json'})
     };
 
-    return this.http.get(this.URL, headers)
+    return this.http.get(this.URL+ '?id=1', headers)
   }
-  emailSent(): Observable<any> {
+  emailSent(data: any): Observable<any> {
     console.log('Request is sent!');
     // Using the POST method
     const headers =  {
       headers: new  HttpHeaders({
         'Content-Type': 'application/json'})
     };
-    return this.http.post(this.URL,
-    {
-      'email' : 'arief.shah@gmail.com',
-      'phone' :'090'
-    },
+    return this.http.post(this.URL,data,
     headers)
   }
 

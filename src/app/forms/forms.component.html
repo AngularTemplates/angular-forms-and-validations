@@ -9,7 +9,7 @@
     </div>
 
     <div class="col">
-      <h2 class="section-title"> {{val.campaignHeading}}</h2>
+      <h2 class="section-title"> </h2>
       <form [formGroup]="userDetailsForm" (ngSubmit)="onSubmitUserDetails(userDetailsForm.value)">
         <mat-form-field class="full-width">
           <input matInput placeholder="Full Name" formControlName="fullname" required>
@@ -58,8 +58,6 @@
 
           </dxo-toolbar>
 
-
-          {{valueContent}}
         </dx-html-editor>
 
         <div class="options">
@@ -69,7 +67,6 @@
           </dx-button-group>
 
         </div>
-
 
         <div></div>
         <button class="submit-btn" color="primary" mat-raised-button type="submit" [disabled]="!userDetailsForm.valid">

@@ -24,11 +24,13 @@ import {
  } from '@angular/material';
 
 import { FormsComponent } from './forms/forms.component';
+import { FactSheetComponent } from './fact-sheet/fact-sheet.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    FormsComponent
+    FormsComponent,
+    FactSheetComponent
   ],
   imports: [
     BrowserModule,
