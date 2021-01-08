@@ -1,13 +1,17 @@
 <div class="container">
   <div class="row">
 
-    <div class="col-4">
-      <div class="user-details-container">
-        <img class="user-image" src="/facts/assets/img/swklogojpeg.jpeg" height="100px" width="150px" />
-       <h1> <p>
-        fact-sheet ! {{id}}
-      </p></h1>
-      </div>
+
+    <div class="user-details-container col-2">
+      <img class="user-image" src="./assets/images/swklogojpeg.jpeg" height="100px" width="150px" />
+     
     </div>
+  <div class="col-10">
+<div *ngIf="timeline.length" class="container-fluid">
+    <horizontal-timeline [timelineElements]="timeline" [showContent]="true" [timelineWrapperWidth]="2000"></horizontal-timeline>
+
+
   </div>
 </div>
+
+   

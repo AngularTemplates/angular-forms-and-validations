@@ -1,0 +1,37 @@
+<section class="cd-horizontal-timeline" [ngClass]="{'loaded': loaded}">
+  <div class="timeline">
+    <div class="events-wrapper">
+      <div class="events" #eventsWrapper [style.width.px]="eventsWrapperWidth">
+        <ol>
+          <li *ngFor="let item of timelineElements; let index = index">
+            <a #timelineEvents href="#" [ngClass]="{'selected': item.selected, 'older-event': index < selectedIndex}"
+               (click)="onEventClick($event, item)"  [tooltip]="item.date| date:'MMMM d'" [hide-delay]="1000" placement="bottom" theme="light"></a>
+            <span></span>
+          </li>
+        </ol>
+        <span class="filling-line" aria-hidden="true" #fillingLine></span>
+      </div>
+    </div>
+
+    <ul class="cd-timeline-navigation">
+      <li>
+        <a href="#" (click)="onScrollClick($event, false)" class="prev" [ngClass]="{'inactive':prevLinkInactive}">Prev</a>
+      </li>
+      <li>
+        <a href="#" (click)="onScrollClick($event, true)" class="next" [ngClass]="{'inactive':nextLinkInactive}">Next</a>
+      </li>
+    </ul>
+  </div>
+
+  <div class="events-content" *ngIf="showContent">
+    <ol>
+      <li *ngFor="let item of timelineElements; let index = index"
+          [@contentState]="item.selected ? 'active' : (index < selectedIndex ? 'left' : 'right')">
+        <div class="on-date">on {{item.acdate | date:'MMMM, d - yyyy'}}</div>
+        <h1>{{item.title}}</h1>
+         <p>{{item.content}}</p>
+         <div (click)=onClickTweet(item) class="tweet">t</div>
+      </li>
+    </ol>
+  </div>
+</section>

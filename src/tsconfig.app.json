@@ -2,7 +2,7 @@
   "extends": "../tsconfig.json",
   "compilerOptions": {
     "outDir": "../out-tsc/app",
-    "types": [],
+    "types":["jquery"],
     "paths": {
       "jszip": [
         "node_modules/jszip/dist/jszip.min.js"

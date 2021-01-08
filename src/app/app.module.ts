@@ -14,23 +14,27 @@ import {
 
 import "devextreme/ui/html_editor/converters/markdown";
 
+import { HorizontalTimelineComponent } from './horizontal-timeline/horizontal-timeline.component';
 import {
   MatButtonModule,
   MatCheckboxModule,
   MatInputModule,
   MatSelectModule,
   MatDatepickerModule,
-  MatNativeDateModule
+  MatNativeDateModule,
+
  } from '@angular/material';
 
 import { FormsComponent } from './forms/forms.component';
 import { FactSheetComponent } from './fact-sheet/fact-sheet.component';
+import { TooltipModule } from 'ng2-tooltip-directive';
 
 @NgModule({
   declarations: [
     AppComponent,
     FormsComponent,
-    FactSheetComponent
+    FactSheetComponent,
+    HorizontalTimelineComponent
   ],
   imports: [
     BrowserModule,
@@ -46,7 +50,8 @@ import { FactSheetComponent } from './fact-sheet/fact-sheet.component';
     MatSelectModule,
     HttpClientModule,
     DxHtmlEditorModule,
-    DxButtonGroupModule
+    DxButtonGroupModule,
+    TooltipModule
   ],
   providers: [],
   bootstrap: [AppComponent]
