@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { FactSheetComponent } from './fact-sheet/fact-sheet.component';
-import { FormsComponent } from './forms/forms.component';
+// import { FormsComponent } from './forms/forms.component';
 
 const routes: Routes = [
-    { path: '', component: FormsComponent },
+    // { path: '', component: FormsComponent },
     { path: 'kash-fact/:id', component: FactSheetComponent }
 ];
 
