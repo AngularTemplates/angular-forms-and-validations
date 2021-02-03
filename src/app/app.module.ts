@@ -26,6 +26,8 @@ import { HorizontalTimelineComponent } from './horizontal-timeline/horizontal-ti
 //import { FormsComponent } from './forms/forms.component';
 import { FactSheetComponent } from './fact-sheet/fact-sheet.component';
 import { TooltipModule } from 'ng2-tooltip-directive';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+
 
 @NgModule({
   declarations: [
@@ -49,7 +51,7 @@ import { TooltipModule } from 'ng2-tooltip-directive';
     HttpClientModule,// ,
     // DxHtmlEditorModule,
     // DxButtonGroupModule,
-    TooltipModule
+    TooltipModule, FontAwesomeModule
   ],
   providers: [],
   bootstrap: [AppComponent]

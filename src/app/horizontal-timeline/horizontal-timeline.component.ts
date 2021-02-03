@@ -9,8 +9,23 @@ import {
   ViewChild,
   ViewChildren,
 } from '@angular/core';
-import { TimelineElement } from './timeline-element';
-import { animate, keyframes, state, style, transition, trigger } from '@angular/animations';
+import {
+  TimelineElement
+} from './timeline-element';
+import {
+  animate,
+  keyframes,
+  state,
+  style,
+  transition,
+  trigger
+} from '@angular/animations';
+import {
+  faTwitter
+} from '@fortawesome/free-brands-svg-icons';
+import {
+  faAngleDoubleRight,faAngleDoubleLeft
+} from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'horizontal-timeline',
@@ -20,15 +35,25 @@ import { animate, keyframes, state, style, transition, trigger } from '@angular/
   animations: [
     trigger('contentState', [
       state('active', style({
-        position: 'relative', 'z-index': 2, opacity: 1,
+        position: 'relative',
+        'z-index': 2,
+        opacity: 1,
       })),
       transition('right => active', [
         style({
           transform: 'translateX(100%)'
         }),
         animate('400ms ease-in-out', keyframes([
-          style({ opacity: 0, transform: 'translateX(100%)', offset: 0 }),
-          style({ opacity: 1, transform: 'translateX(0%)', offset: 1.0 })
+          style({
+            opacity: 0,
+            transform: 'translateX(100%)',
+            offset: 0
+          }),
+          style({
+            opacity: 1,
+            transform: 'translateX(0%)',
+            offset: 1.0
+          })
         ]))
       ]),
       transition('active => right', [
@@ -36,8 +61,16 @@ import { animate, keyframes, state, style, transition, trigger } from '@angular/
           transform: 'translateX(-100%)'
         }),
         animate('400ms ease-in-out', keyframes([
-          style({ opacity: 1, transform: 'translateX(0%)', offset: 0 }),
-          style({ opacity: 0, transform: 'translateX(100%)', offset: 1.0 })
+          style({
+            opacity: 1,
+            transform: 'translateX(0%)',
+            offset: 0
+          }),
+          style({
+            opacity: 0,
+            transform: 'translateX(100%)',
+            offset: 1.0
+          })
         ]))
       ]),
       transition('active => left', [
@@ -45,8 +78,16 @@ import { animate, keyframes, state, style, transition, trigger } from '@angular/
           transform: 'translateX(-100%)'
         }),
         animate('400ms ease-in-out', keyframes([
-          style({ opacity: 1, transform: 'translateX(0%)', offset: 0 }),
-          style({ opacity: 0, transform: 'translateX(-100%)', offset: 1.0 })
+          style({
+            opacity: 1,
+            transform: 'translateX(0%)',
+            offset: 0
+          }),
+          style({
+            opacity: 0,
+            transform: 'translateX(-100%)',
+            offset: 1.0
+          })
         ]))
       ]),
       transition('left => active', [
@@ -54,28 +95,38 @@ import { animate, keyframes, state, style, transition, trigger } from '@angular/
           transform: 'translateX(100%)'
         }),
         animate('400ms ease-in-out', keyframes([
-          style({ opacity: 0, transform: 'translateX(-100%)', offset: 0 }),
-          style({ opacity: 1, transform: 'translateX(0%)', offset: 1.0 })
+          style({
+            opacity: 0,
+            transform: 'translateX(-100%)',
+            offset: 0
+          }),
+          style({
+            opacity: 1,
+            transform: 'translateX(0%)',
+            offset: 1.0
+          })
         ]))
       ]),
     ])
   ]
 })
 export class HorizontalTimelineComponent implements AfterViewInit {
+  rightIcon=faAngleDoubleRight;
+  leftIcon=faAngleDoubleLeft
+  tIcon = faTwitter;
   prevLinkInactive: boolean = true;
   nextLinkInactive: boolean = false;
   loaded: boolean = false;
   selectedIndex: number = 0;
   @ViewChild('eventsWrapper') eventsWrapper: ElementRef;
   @ViewChild('fillingLine') fillingLine: ElementRef;
-  @ViewChildren('timelineEvents') timelineEvents: QueryList<ElementRef>;
+  @ViewChildren('timelineEvents') timelineEvents: QueryList < ElementRef > ;
   eventsWrapperWidth: number = 0;
   private _viewInitialized = false;
 
-  constructor(private _cdr: ChangeDetectorRef) {
-  }
+  constructor(private _cdr: ChangeDetectorRef) {}
 
-  private _timelineWrapperWidth = 720;
+  private _timelineWrapperWidth = 0;
 
   @Input()
   set timelineWrapperWidth(value: number) {
@@ -214,11 +265,11 @@ export class HorizontalTimelineComponent implements AfterViewInit {
     this.initView();
   }
 
-onClickTweet(item: TimelineElement){
-console.log("tweet clicked:", item);
-  var urltoTweet='https://twitter.com/intent/tweet?text=' +  item.content ;    
-   window.open( urltoTweet);
-};
+  onClickTweet(item: TimelineElement) {
+    console.log("tweet clicked:", item);
+    var urltoTweet = 'https://twitter.com/intent/tweet?text=' + item.content;
+    window.open(urltoTweet);
+  };
   onScrollClick(event: Event, forward: boolean) {
     event.preventDefault();
     this.updateSlide(this.eventsWrapperWidth, forward);
@@ -246,6 +297,7 @@ console.log("tweet clicked:", item);
   }
 
   initTimeline(timeLines: TimelineElement[]) {
+    this._timelineWrapperWidth = timeLines.length * 30;
     let eventsMinLapse = HorizontalTimelineComponent.minLapse(timeLines);
     // assign a left position to the single events along the timeline
     this.setDatePosition(timeLines, this._eventsMinDistance, eventsMinLapse);
@@ -259,9 +311,9 @@ console.log("tweet clicked:", item);
     let translateValue = HorizontalTimelineComponent.getTranslateValue(this.eventsWrapper.nativeElement);
 
     if (forward) {
-      this.translateTimeline(translateValue - this._timelineWrapperWidth + this._eventsMinDistance, this._timelineWrapperWidth - timelineTotWidth)
+      this.translateTimeline(translateValue - this._timelineWrapperWidth + this._eventsMinDistance, this._timelineWrapperWidth - timelineTotWidth, forward)
     } else {
-      this.translateTimeline(translateValue + this._timelineWrapperWidth - this._eventsMinDistance, null);
+      this.translateTimeline(translateValue + this._timelineWrapperWidth - this._eventsMinDistance, null, forward);
     }
   }
 
@@ -269,21 +321,55 @@ console.log("tweet clicked:", item);
     let eventStyle = window.getComputedStyle(element);
     let eventLeft = HorizontalTimelineComponent.pxToNumber(eventStyle.getPropertyValue('left'));
     let translateValue = HorizontalTimelineComponent.getTranslateValue(this.eventsWrapper.nativeElement);
+    console.log("updateTimelinePosition");
 
     if (eventLeft > this._timelineWrapperWidth - translateValue) {
-      this.translateTimeline(-eventLeft + this._timelineWrapperWidth / 2, this._timelineWrapperWidth - this.eventsWrapperWidth);
+      this.translateTimeline(-eventLeft + this._timelineWrapperWidth / 2, this._timelineWrapperWidth - this.eventsWrapperWidth, null);
     }
   }
 
-  translateTimeline(value: number, totWidth: number | null) {
+  translateTimeline(value: number, totWidth: number | null, forward) {
+    var n = -1;
+    var t = this;
+    this._timelineElements.some(function (item: TimelineElement) {
+      n++;
+      if (item.selected ) {
+
+        if (n < t._timelineElements.length) {
+          if (forward && t.nextLinkInactive === false) {
+            t.nextLinkInactive = false;
+            t.prevLinkInactive = false;
+            item.selected = false;
+            t._timelineElements[n + 1].selected = true;
+            if (n==t._timelineElements.length-2){
+              t.nextLinkInactive = true;
+
+            }
+          } else if ( !forward && t.prevLinkInactive === false) {
+            item.selected = false;
+            t.nextLinkInactive = false;
+            t.prevLinkInactive = false;
+            t._timelineElements[n - 1].selected = true;
+            if (n==t._timelineElements.length-2){
+              t.prevLinkInactive = true;
+
+            }
+          }
+        }
+
+        return true;
+        // item.selected = false;
+      }
+    });
+
     // only negative translate value
     value = (value > 0) ? 0 : value;
     // do not translate more than timeline width
-    value = ( !(totWidth === null) && value < totWidth ) ? totWidth : value;
+    value = (!(totWidth === null) && value < totWidth) ? totWidth : value;
     HorizontalTimelineComponent.setTransformValue(this.eventsWrapper.nativeElement, 'translateX', value + 'px');
     // update navigation arrows visibility
-    this.prevLinkInactive = value === 0;
-    this.nextLinkInactive = value === totWidth;
+    // this.prevLinkInactive = value === 0;
+    // this.nextLinkInactive = value === totWidth;
   }
 
   setTimelineWidth(elements: TimelineElement[], width: number, eventsMinLapse: number) {
@@ -316,8 +402,6 @@ console.log("tweet clicked:", item);
     if (!this._viewInitialized) {
       return;
     }
-
-    console.log("hi");
     if (this._timelineElements && this._timelineElements.length) {
       for (let i = 0; i < this._timelineElements.length; i++) {
         if (this._timelineElements[i].selected) {
@@ -333,19 +417,17 @@ console.log("tweet clicked:", item);
   }
 
   private setDatePosition(elements: TimelineElement[], min: number, eventsMinLapse: number) {
-    const num=Math.round(100/31);
-
-
+    const num = Math.round(100 / 31);
     let timelineEventsArray = this.timelineEvents.toArray();
     let i: number = 0;
-    console.log("setDatePosition");
+
     for (let component of elements) {
       let distance = HorizontalTimelineComponent.dayDiff(elements[0].date, component.date);
       let distanceNorm = Math.round(distance / eventsMinLapse);
-      let dayofMonth=component.date.getDate()
-      timelineEventsArray[i].nativeElement.style.left = dayofMonth * num*11 + 'px';
+      let dayofMonth = component.date.getDate()
+      timelineEventsArray[i].nativeElement.style.left = dayofMonth * num * 11 + 'px';
       // span
-      let span: HTMLSpanElement = <HTMLSpanElement>timelineEventsArray[i].nativeElement.parentElement.children[1];
+      let span: HTMLSpanElement = < HTMLSpanElement > timelineEventsArray[i].nativeElement.parentElement.children[1];
       let spanWidth = HorizontalTimelineComponent.getElementWidth(span);
       span.style.left = distanceNorm * min + spanWidth / 2 + 'px';
       i++;

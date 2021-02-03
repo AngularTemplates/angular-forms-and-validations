@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "public": "dist/angular-forms-and-validations",
+    "public": "dist/swk",
     "ignore": [
       "firebase.json",
       "**/.*",

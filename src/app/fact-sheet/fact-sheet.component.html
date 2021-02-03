@@ -1,17 +1,42 @@
 <div class="container">
   <div class="row">
-
-
-    <div class="user-details-container col-2">
+    <div class="user-details-container col-md-3">
       <img class="user-image" src="./assets/images/swklogojpeg.jpeg" height="100px" width="150px" />
-     
-    </div>
-  <div class="col-10">
-<div *ngIf="timeline.length" class="container-fluid">
-    <horizontal-timeline [timelineElements]="timeline" [showContent]="true" [timelineWrapperWidth]="2000"></horizontal-timeline>
 
+    </div>
+    <div class="col-md-9 historical" *ngIf="!showFeedbackPage()">
+      <h5><span style=" font-weight: bold;"> Kashmir:</span> A historical timeline <a
+          href="https://adimagazine.com/articles/kashmir-a-historical-timeline/">click here</a></h5>
+    </div>
+    <div *ngIf="!showFeedbackPage(); then thenBlock else elseBlock"></div>
+    <ng-template #thenBlock>
+      <div class="row" >
+        <div *ngIf="timeline.length" class="container-fluid">
+          <horizontal-timeline [timelineElements]="timeline" [showContent]="true" [timelineWrapperWidth]="2000">
+          </horizontal-timeline>
+        </div>
+        <div class="footer-dark">
+          <footer class="container">
+            <div>
+              Incidents, in this calendar, are but a reminder of the sacrifices made by the people of Kashmir and are by
+              no means a complete or prioritised list of Indian atrocities in Kashmir.
+
+
+            </div>
+            <div> <em>We'd love to hear from you!</em> <br>
+              To provide feedback, including suggested improvements/amendments/further inclusions, please <a
+                href="/kash-fact/200"> click here</a>
+            </div>
+          </footer>
+        </div>
+      </div>
+    </ng-template>
+    <ng-template #elseBlock>
+
+     <div class="container"> <em>We'd love to hear from you!</em> <br>
+      To provide feedback, including suggested improvements/amendments/further inclusions<iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfIdQagyzkWzvteGC2xgPev5pHySETf_zRak_k_vBs5JcsuFA/viewform?embedded=true" width="560" height="1046" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+    </div>
+    </ng-template>
 
   </div>
 </div>
-
-   

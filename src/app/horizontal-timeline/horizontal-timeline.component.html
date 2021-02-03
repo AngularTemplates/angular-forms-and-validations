@@ -15,11 +15,13 @@
 
     <ul class="cd-timeline-navigation">
       <li>
-        <a href="#" (click)="onScrollClick($event, false)" class="prev" [ngClass]="{'inactive':prevLinkInactive}">Prev</a>
+          <a href="#" (click)="onScrollClick($event, false)" class="prev" [ngClass]="{'inactive':prevLinkInactive}">Prev
+
+        </a>
       </li>
       <li>
         <a href="#" (click)="onScrollClick($event, true)" class="next" [ngClass]="{'inactive':nextLinkInactive}">Next</a>
-      </li>
+        </li>
     </ul>
   </div>
 
@@ -28,9 +30,10 @@
       <li *ngFor="let item of timelineElements; let index = index"
           [@contentState]="item.selected ? 'active' : (index < selectedIndex ? 'left' : 'right')">
         <div class="on-date">on {{item.acdate | date:'MMMM, d - yyyy'}}</div>
-        <h1>{{item.title}}</h1>
+
+        <h1>{{item.title}} <fa-icon  (click)=onClickTweet(item)  [icon]="tIcon" [styles]="{'stroke': '#1DA1F2', 'color': '#1DA1F2'}" size="xs"></fa-icon>	</h1>
          <p>{{item.content}}</p>
-         <div (click)=onClickTweet(item) class="tweet">t</div>
+       <em *ngIf=item.url>For more details <a [href]=item.url target="_blank"> click here</a></em>
       </li>
     </ol>
   </div>

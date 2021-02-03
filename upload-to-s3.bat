@@ -1,4 +1,5 @@
 #!/bin/bash
+aws s3 cp s3://www.standwithkashmir.org.au/facts/ ./archive --recursive
 # Empty the S3 bucket
 aws s3 rm s3://www.standwithkashmir.org.au/facts/ --recursive
 

@@ -22,13 +22,15 @@ import {
 import { TimelineElement } from './../horizontal-timeline/timeline-element';
 
 import * as _ from 'lodash';
+
+
 @Component({
   selector: 'app-fact-sheet',
   templateUrl: './fact-sheet.component.html',
   styleUrls: ['./fact-sheet.component.scss']
 })
 export class FactSheetComponent implements OnInit {
-
+  feedbackPageno=200;
   private data: Observable < Data[] > ;
   val: any;
   timeline: TimelineElement[] = [];
@@ -58,7 +60,9 @@ export class FactSheetComponent implements OnInit {
   ut harum ipsam molestias maxime non nisi reiciendis eligendi! Doloremque quia pariatur harum ea amet quibusdam
   quisquam, quae, temporibus dolores porro doloribus.`;
 
-
+  showFeedbackPage(){
+    return this.feedbackPageno==this.id;
+  }
 
   load() {
 

@@ -66,7 +66,7 @@ ol, ul {
   top: 49px;
   height: 4px;
   /* width will be set using JavaScript */
-  background: #dfdfdf;
+   background:red;/* #dfdfdf; */
   -webkit-transition: -webkit-transform 0.4s;
   -moz-transition: -moz-transform 0.4s;
   transition: transform 0.4s;
@@ -89,7 +89,7 @@ ol, ul {
   top: 0;
   height: 100%;
   width: 100%;
-  background-color: #7b9d6f;
+  background-color: purple;/*#7b9d6f;*/
   -webkit-transform: scaleX(0);
   -moz-transform: scaleX(0);
   -ms-transform: scaleX(0);
@@ -137,7 +137,7 @@ ol, ul {
   height: 20px;
   width: 20px;
   border-radius: 50%;
-  border: 6px solid #dfdfdf;
+  border: 6px solid red;/*#dfdfdf;*/
   background-color: #f8f8f8;
   -webkit-transition: background-color 0.3s, border-color 0.3s;
   -moz-transition: background-color 0.3s, border-color 0.3s;
@@ -145,8 +145,8 @@ ol, ul {
 }
 
 .cd-horizontal-timeline .events a:hover::after {
-  background-color: #7b9d6f;
-  border-color: #7b9d6f;
+  background-color: red;/*#7b9d6f;*/
+  border-color: red;/*#7b9d6f;*/
 }
 
 .cd-horizontal-timeline .events a.selected {
@@ -154,18 +154,15 @@ ol, ul {
 }
 
 .cd-horizontal-timeline .events a.selected::after {
-  background-color: #7b9d6f;
-  border-color: #7b9d6f;
+  background-color: red;/*#7b9d6f;*/
+  border-color: red;/*#7b9d6f;*/
 }
 
 .cd-horizontal-timeline .events a.older-event::after {
-  border-color: #7b9d6f;
+  border-color: red;/*#7b9d6f;*/
 }
 
 @media only screen and (min-width: 1100px) {
-  .cd-horizontal-timeline {
-    /* margin: 6em auto; */
-  }
 
   .cd-horizontal-timeline::before {
     /* never visible - this is used in jQuery to check the current MQ */
@@ -194,7 +191,7 @@ ol, ul {
   height: 34px;
   width: 34px;
   border-radius: 50%;
-  border: 6px solid #dfdfdf;
+  border: 6px solid red;/*#dfdfdf;*/
   /* replace text with an icon */
   overflow: hidden;
   color: transparent;
@@ -206,10 +203,10 @@ ol, ul {
 }
 
 .tweet{
-  background: url(/assets/images/tweet.svg) no-repeat 0 0;
+  background: url("/assets/images/tweet.svg") no-repeat 0 0;
 }
 .cd-timeline-navigation a::after {
-  /* arrow icon */
+  /* arrow icon*/
   content: '';
   position: absolute;
   height: 16px;
@@ -223,7 +220,7 @@ ol, ul {
   -ms-transform: translateX(-50%) translateY(-50%);
   -o-transform: translateX(-50%) translateY(-50%);
   transform: translateX(-50%) translateY(-50%);
-  background: url(/assets/images/cd-arrow.svg) no-repeat 0 0;
+ background: url("/assets/images/right-arrow.png") no-repeat 0 0;
 }
 
 .cd-timeline-navigation a.prev {
@@ -240,7 +237,7 @@ ol, ul {
 }
 
 .cd-timeline-navigation a:hover {
-  border-color: #7b9d6f;
+  border-color: red;/*#7b9d6f;*/
 }
 
 .cd-timeline-navigation a.inactive {
@@ -252,7 +249,7 @@ ol, ul {
 }
 
 .cd-timeline-navigation a.inactive:hover {
-  border-color: #dfdfdf;
+  border-color: red;/*#dfdfdf;*/
 }
 
 .cd-horizontal-timeline .events-content {
