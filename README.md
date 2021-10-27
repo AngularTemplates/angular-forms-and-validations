@@ -1,27 +1,33 @@
-# AngularFormsAndValidations
+# Angular Forms and Validations
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.1.0.
+This project is part of an Angular tutorial about forms and validations.
 
-## Development server
+Get the step by step free tutorial in https://angular-templates.io/tutorials/about/angular-forms-and-validations
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+**Please support this project by simply putting a Github star ⭐. 🙏 Thanks**
 
-## Code scaffolding
+## Installation
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Run `npm install` to install all the required dependencies
 
-## Build
+Then run `ng serve` to start a dev server.
+Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+![](https://s3-us-west-2.amazonaws.com/angular-templates/tutorials/angular-forms-and-validations/angular-forms-and-validations-3.png)
 
-## Running unit tests
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Online Demo
 
-## Running end-to-end tests
+You can try the online demo of this Angular Forms example app [here](https://angular-forms-and-validations.firebaseapp.com/).
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+## Premium Angular Admin Template
 
-## Further help
+If you want to build a complex and robust app with Angular Forms and Validations you should check [Fully - Angular Admin Template](https://angular-templates.io/product/fully-angular-admin-template) which is a super complete application to build your next angular project.
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+Created with performance and ease of development in mind, this Angular web template is something you will love. It includes all the components that you might need inside a project and a detailed documentation on how to get started.
+
+
+![]https://angular-templates.s3-us-west-2.amazonaws.com/fully-angular-admin-template/fully-angular-admin-template-showcase.jpg)
+
+## Free Angular examples
+Find more Angular tutorials and starter apps in https://angular-templates.io

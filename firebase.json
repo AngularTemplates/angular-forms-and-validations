@@ -1,0 +1,16 @@
+{
+  "hosting": {
+    "public": "dist/angular-forms-and-validations",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ]
+  }
+}
